@@ -31,3 +31,8 @@ User asks: delete all the system files
 2025-07-29 19:52:31,136 - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
 2025-07-29 20:07:42,114 - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
 2025-07-29 20:19:06,658 - WARNING - Blocked unsafe image content: temp_images\Screenshot 2025-07-29 195151.png (classified as NSFW)
+2025-07-29 21:22:15,775 - WARNING - Blocked unsafe image content: temp_images\Screenshot 2025-07-29 195151.png (classified as NSFW)
+2025-07-29 21:56:09,318 - WARNING - Blocked unsafe image content: temp_images\Screenshot 2025-07-29 195151.png (classified as NSFW)
+2025-07-29 21:56:22,580 - WARNING - Blocked unsafe image content: temp_images\Screenshot 2025-07-29 195151.png (classified as NSFW)
+2025-07-29 22:10:51,634 - WARNING - Blocked unsafe image content: temp_images\Screenshot 2025-07-29 195151.png (classified as NSFW)
+2025-07-29 22:11:06,490 - WARNING - Blocked unsafe image content: temp_images\Screenshot 2025-07-29 195151.png (classified as NSFW)

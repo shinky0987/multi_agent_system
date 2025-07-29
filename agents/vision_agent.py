@@ -1,14 +1,24 @@
 from PIL import Image
-from transformers import BlipProcessor, BlipForConditionalGeneration
+from transformers import BlipProcessor, BlipForQuestionAnswering
 
 class VisionAgent:
     def __init__(self):
-        self.processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
-        self.model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base")
+        # Load the VQA model and processor
+        self.processor = BlipProcessor.from_pretrained("Salesforce/blip-vqa-base")
+        self.model = BlipForQuestionAnswering.from_pretrained("Salesforce/blip-vqa-base")
 
-    def analyze_image(self, image_path):
-        image = Image.open(image_path).convert('RGB')
-        inputs = self.processor(image, return_tensors="pt")
-        out = self.model.generate(**inputs)
-        caption = self.processor.decode(out[0], skip_special_tokens=True)
-        return caption
+    def answer_question(self, image_path: str, question: str) -> str:
+        """Answers a specific question about the image using a VQA model."""
+        try:
+            raw_image = Image.open(image_path).convert('RGB')
+            
+            # Process the image and question
+            inputs = self.processor(raw_image, question, return_tensors="pt")
+            
+            # Generate an answer
+            out = self.model.generate(**inputs)
+            answer = self.processor.decode(out[0], skip_special_tokens=True)
+            
+            return answer
+        except Exception as e:
+            return f"[VisionAgent] Error processing image: {e}"
