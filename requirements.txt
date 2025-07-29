@@ -1,0 +1,7 @@
+torch
+transformers
+Pillow
+opencv-python
+scikit-learn
+streamlit
+python-dotenv
