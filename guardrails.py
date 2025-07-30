@@ -23,17 +23,18 @@ allowed_filenames = {"example.txt", "document.txt", "notes.txt"} # Whitelist of 
 disallowed_path_keywords = ["..", "/", "\\", ":"] # Prevent path traversal
 
 def is_malicious_text(text: str) -> (bool, str):
-    """Check for malicious text using an AI moderation agent."""
+    """Check for malicious text using an AI moderation agent and pattern matching."""
     try:
         moderation_agent = TextModerationAgent()
         is_harmful, reason = moderation_agent.is_malicious(text)
         if is_harmful:
-            logging.warning(f"Blocked malicious text (reason: {reason}): {text}")
+            logging.warning(f"Blocked malicious text (reason: {reason}): {text[:100]}...")
             return True, reason
+        logging.info(f"Text passed moderation check: {text[:50]}...")
         return False, "safe"
     except Exception as e:
         logging.error(f"Error during text moderation: {e}")
-        return True, "error" # Fail safe and block the query
+        return True, f"moderation_error: {str(e)}" # Fail safe and block the query
 
 def is_safe_image_content(image_path: str) -> bool:
     """Check if the image content is safe (not NSFW)."""
